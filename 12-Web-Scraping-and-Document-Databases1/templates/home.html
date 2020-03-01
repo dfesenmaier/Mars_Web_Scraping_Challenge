@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-md">
+	<div class="row myrow">
+		<div class="col-12 text-center">
+			<h3>Mars Project</h3>
+			<form action="/scrape">
+			  <button type="submit" class="btn btn-light">Scrape</button>
+			</form>
+		</div>
+	</div>
+</div>
+<div class="container-md">
+	{% for line in data %}
+	<div class="row">
+		<div class="col-md-12">
+			<h5>Latest Mars News</h5>
+			<h6>{{ line["News"][0][0] }}</h6>
+			<p>{{ line["News"][1][0] }}</p>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-8">
+			<h5>Featured Mars Image</h5>
+			<img class="myimage" src='{{ line["News"][2] }}'></img>
+		</div>
+
+		<div class="col-md-4">
+			<div class="row">
+				<h5>Current Weather On Mars</h5>
+				<p class="myp">{{ line["Tweet"] }}</p>
+			</div>
+			<hr class="style1">
+			<div class="row">
+				<h5>Mars Current Facts</h5>
+				<p>{{ (line["Facts"])|safe }}</p>
+			</div>
+		</div>
+	</div>
+
+	<h5 class="center">Mars Hemispheres</h5>
+	<div class="row">
+		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+			<h6 class="center">{{ line["hemisphere"][0]["title"] }}</h6>
+  			<img class="myimage" src='{{ line["Hemisphere"][0]["img_url"] }}'>
+		</div>
+		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+			<h6 class="center">{{ line["hemisphere"][1]["title"] }}</h6>
+  			<img class="myimage" src='{{ line["Hemisphere"][1]["img_url"] }}'>
+		</div>
+		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+			<h6 class="center">{{ line["Hemisphere"][2]["title"] }}</h6>
+  			<img class="myimage" src='{{ line["Hemisphere"][2]["img_url"] }}'>
+		</div>
+		<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+			<h6 class="center">{{ line["hemisphere"][3]["title"] }}</h6>
+  			<img class="myimage" src='{{ line["Hemisphere"][3]["img_url"] }}'>
+		</div>
+	</div>
+	
+
+
+	{% endfor %}
+</div>
+{% endblock %}

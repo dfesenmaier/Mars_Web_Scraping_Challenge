@@ -1,0 +1,23 @@
+body{
+	background: #EEE2DC;
+}
+
+.myrow {
+	background: #000000;
+	padding-top: 25px;
+	padding-bottom: 25px;
+	color: #FFF;
+}
+
+.myimage{
+	width: 100%;
+	padding-bottom: 1rem;
+}
+
+.myp{
+	font-size: 16px;
+}
+
+table{
+	font-size: 16px;
+}
